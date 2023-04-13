@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "target": "ES2016",
+        "outDir": "dist",
+        "sourceMap": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+        "declaration": true,
+        "resolveJsonModule": true,
+        "noUnusedLocals": true,
+        "baseUrl": ".",
+        "paths": {
+            "@Class/*": [
+                "./class/*"
+            ],
+            "@Types/*": [
+                "./types/*"
+            ],
+        }
+    },
+    "exclude": [
+        "./node_modules/**/*",
+        "./dist/**/*"
+    ]
+}
