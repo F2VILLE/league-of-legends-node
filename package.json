@@ -4,6 +4,7 @@
   "description": "This is a TypeScript module to get informations about League of Legends users Mastery and Champions.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "type": "module",
   "scripts": {
     "build": "tsc"
   },
