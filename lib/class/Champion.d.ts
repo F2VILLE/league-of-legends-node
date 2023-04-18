@@ -1,4 +1,4 @@
-import ChampionOptions from '@Types/ChampionOptions';
+import ChampionOptions from '../types/ChampionOptions';
 declare class Champion {
     #private;
     id: string;

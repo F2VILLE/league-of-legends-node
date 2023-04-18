@@ -1,4 +1,4 @@
-declare type Summoner = {
+type Summoner = {
     accountId: string;
     profileIconId: number;
     revisionDate: number;

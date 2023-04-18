@@ -1,8 +1,8 @@
-import RiotUserOptions from '@Types/RiotUserOptions';
-import Champions from '@Types/Champions';
-import Summoner from '@Types/Summoner';
-import Langs from '@Types/Langs';
-import Servers from '@Types/Servers';
+import RiotUserOptions from '../types/RiotUserOptions';
+import Champions from '../types/Champions';
+import Summoner from '../types/Summoner';
+import Langs from '../types/Langs';
+import Servers from '../types/Servers';
 declare class RiotUser {
     #private;
     username: string;

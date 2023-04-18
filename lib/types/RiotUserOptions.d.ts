@@ -1,6 +1,6 @@
 import Langs from "./Langs";
 import Servers from "./Servers";
-declare type RiotUserOptions = {
+type RiotUserOptions = {
     username: string;
     apiVersion: string;
     lang?: Langs;

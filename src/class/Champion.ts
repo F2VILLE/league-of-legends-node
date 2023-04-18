@@ -1,4 +1,4 @@
-import ChampionOptions from '@Types/ChampionOptions';
+import ChampionOptions from '../types/ChampionOptions';
 import axios from 'axios';
 
 class Champion {

@@ -1,11 +1,11 @@
 import axios from 'axios';
-import RiotUserOptions from '@Types/RiotUserOptions';
-import Champions from '@Types/Champions';
-import ChampionDatas from '@Types/ChampionDatas';
-import Summoner from '@Types/Summoner';
+import RiotUserOptions from '../types/RiotUserOptions';
+import Champions from '../types/Champions';
+import ChampionDatas from '../types/ChampionDatas';
+import Summoner from '../types/Summoner';
 import Champion from './Champion';
-import Langs from '@Types/Langs';
-import Servers from '@Types/Servers';
+import Langs from '../types/Langs';
+import Servers from '../types/Servers';
 
 class RiotUser {
     username: string;

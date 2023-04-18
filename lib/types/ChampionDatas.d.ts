@@ -1,5 +1,5 @@
 import Champions from "./Champions";
-declare type ChampionDatas = {
+type ChampionDatas = {
     "id": string;
     "key": string;
     "name": Champions;

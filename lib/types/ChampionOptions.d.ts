@@ -1,6 +1,6 @@
 import Champions from "./Champions";
 import Langs from "./Langs";
-declare type ChampionOptions = {
+type ChampionOptions = {
     championName: Champions;
     apiVersion: string;
     lang: Langs;
