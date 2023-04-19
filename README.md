@@ -8,8 +8,6 @@ Feel free to hit me up on Discord to suggest any modification or if you got a qu
   
 ##  Usage
 
-  
-
 This modules works using classes. There's 3 classes :
 
 - API
@@ -33,7 +31,8 @@ api.getVersion().then((version) => {
 ```
 
 ### RiotUser
-The RiotUser class is used to get User datas and mastery.
+The RiotUser class is used to get User datas and mastery.\
+Note that you need to use an API key in order to get access to users datas. To get an API key, please refer to https://developer.riotgames.com
 ```js
 const  riotUser = new  RiotUser({
 	apiVersion: api.version,
