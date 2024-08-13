@@ -15,68 +15,7 @@ type ChampionDatas = {
       "w": number,
       "h": number
     },
-    "skins": [
-      {
-        "id": string,
-        "num": number,
-        "name": string,
-        "chromas": boolean
-      },
-      {
-        "id": string,
-        "num": number,
-        "name": string,
-        "chromas": boolean
-      },
-      {
-        "id": string,
-        "num": number,
-        "name": string,
-        "chromas": boolean
-      },
-      {
-        "id": string,
-        "num": number,
-        "name": string,
-        "chromas": boolean
-      },
-      {
-        "id": string,
-        "num": number,
-        "name": string,
-        "chromas": boolean
-      },
-      {
-        "id": string,
-        "num": number,
-        "name": string,
-        "chromas": boolean
-      },
-      {
-        "id": string,
-        "num": number,
-        "name": string,
-        "chromas": boolean
-      },
-      {
-        "id": string,
-        "num": number,
-        "name": string,
-        "chromas": boolean
-      },
-      {
-        "id": string,
-        "num": number,
-        "name": string,
-        "chromas": boolean
-      },
-      {
-        "id": string,
-        "num": number,
-        "name": string,
-        "chromas": boolean
-      }
-    ],
+    "skins": SkinObject[],
     "lore": string,
     "blurb": string,
     "allytips": [

@@ -1,13 +1,8 @@
-import {API, Champion} from './lib/index'
+import {API, Item} from './lib/index'
 
 const api = new API()
 
 api.getVersion().then(() => {
-    const champion = new Champion({
-        apiVersion: api.version,
-        championName: "Aatrox",
-        lang: "fr_FR"
-    })
-
-    champion.getChampionDatas().then(console.log).catch(console.error)
+    new Item({id: "223073", apiVersion: api.version}).getItemData().then(console.log)
+    new Item({name: "Stridebreaker", apiVersion: api.version}).getItemData().then(console.log)
 })
