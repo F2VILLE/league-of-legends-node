@@ -13,6 +13,7 @@ type ItemAPIType = {
     into: string[];
     image: {
         full: string;
+        url?: string;
         sprite: string;
         group: string;
         x: number;

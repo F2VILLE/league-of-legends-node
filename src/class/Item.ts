@@ -16,6 +16,7 @@ type ItemAPIType = {
   into: string[];
   image: {
     full: string;
+    url?: string;
     sprite: string;
     group: string;
     x: number;
@@ -63,8 +64,9 @@ class Item {
           const r = res.data;
           const items: ItemAPIType[] = []
           for (const key of Object.keys(r.data)) {
-            const it = r.data[key]
+            const it = r.data[key] as ItemAPIType
             it.id = key
+            it.image.url = `http://ddragon.leagueoflegends.com/cdn/${apiVersion}/img/item/${it.image.full}`
             items.push(it)
           }
           resolve(items);
