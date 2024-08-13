@@ -1,6 +1,6 @@
 {
   "name": "league-of-legends-node",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "This is a TypeScript module to get informations about League of Legends users Mastery and Champions.",
   "main": "lib/index.js",
   "files": [
