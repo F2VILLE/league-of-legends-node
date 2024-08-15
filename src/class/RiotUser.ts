@@ -1,7 +1,7 @@
 import axios from 'axios';
 import RiotUserOptions from '../types/RiotUserOptions';
 import Champions from '../types/Champions';
-import ChampionDatas from '../types/ChampionDatas';
+import ChampionData from '../types/ChampionData';
 import Summoner from '../types/Summoner';
 import Champion from './Champion';
 import Langs from '../types/Langs';
@@ -43,7 +43,7 @@ class RiotUser {
             lang: this.lang
         })
         return new Promise((resolve, reject) => {
-            champion.getChampionDatas().then((data: ChampionDatas) => {
+            champion.getChampionDatas().then((data: ChampionData) => {
                 axios.get(`${this.#riotAPI}/champion-mastery/v4/champion-masteries/by-summoner/${this.summonerID}/by-champion/${data.key}`,
                     {
                         headers: {

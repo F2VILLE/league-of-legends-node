@@ -1,8 +1,9 @@
+import Langs from "../types/Langs";
 type ItemOptions = {
     name?: string;
     id?: string;
     apiVersion: string;
-    lang?: string;
+    lang?: Langs;
 };
 type ItemAPIType = {
     id: string;
@@ -40,10 +41,13 @@ declare class Item {
     id: string;
     name: string;
     apiVersion: string;
-    lang: string;
+    lang: Langs;
     data: ItemAPIType;
     constructor(options: ItemOptions);
-    static getAll(apiVersion: string): Promise<ItemAPIType[]>;
+    static getAll(params: {
+        apiVersion: string;
+        lang: Langs;
+    }): Promise<ItemAPIType[]>;
     iconImageURL(): string | Promise<unknown>;
     getItemData(): Promise<ItemAPIType>;
 }

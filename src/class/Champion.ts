@@ -1,59 +1,15 @@
+import Langs from "../types/Langs";
 import ChampionOptions from "../types/ChampionOptions";
 import axios from "axios";
-
-type ChampionAPIType = {
-  version: string;
-  id: string;
-  key: string;
-  name: string;
-  title: string;
-  blurb: string;
-  info: {
-    attack: number;
-    defense: number;
-    magic: number;
-    difficulty: number;
-  };
-  image: {
-    full: string;
-    sprite: string;
-    group: string;
-    x: number;
-    y: number;
-    w: number;
-    h: number;
-  };
-  tags: string[];
-  partype: string;
-  stats: {
-    hp: number;
-    hpperlevel: number;
-    mp: number;
-    mpperlevel: number;
-    movespeed: number;
-    armor: number;
-    armorperlevel: number;
-    spellblock: number;
-    spellblockperlevel: number;
-    attackrange: number;
-    hpregen: number;
-    hpregenperlevel: number;
-    mpregen: number;
-    mpregenperlevel: number;
-    crit: number;
-    critperlevel: number;
-    attackdamage: number;
-    attackdamageperlevel: number;
-    attackspeedperlevel: number;
-    attackspeed: number;
-  };
-};
+import ChampionsAPIDatas from "../types/ChampionsAPIDatas";
+import ChampionData from "../types/ChampionData";
 
 class Champion {
   id: string;
   apiVersion: string;
   #ddragonAPI: string;
-  lang: string;
+  lang?: Langs;
+  data: ChampionData;
   constructor(options: ChampionOptions) {
     this.id = options.championName;
     this.apiVersion = options.apiVersion;
@@ -61,17 +17,20 @@ class Champion {
     this.#ddragonAPI = `http://ddragon.leagueoflegends.com/cdn`;
   }
 
-  static async getAll(apiVersion: string) {
+  static async getAll(params: { apiVersion: string; lang: Langs }) {
     return new Promise((resolve, reject) => {
       axios
         .get(
-          `http://ddragon.leagueoflegends.com/cdn/${apiVersion}/data/en_US/champion.json`
+          `http://ddragon.leagueoflegends.com/cdn/${params.apiVersion}/data/${params.lang}/champion.json`
         )
         .then((res) => {
           const r = res.data;
-          const champions: ChampionAPIType[] = Object.values(r.data).map(
-            (x) => x
-          ) as ChampionAPIType[];
+          const champions: ChampionsAPIDatas[] = Object.values(r.data).map(
+            (x: ChampionsAPIDatas) => {
+              x.image.url = `http://ddragon.leagueoflegends.com/cdn/${params.apiVersion}/img/champion/${x.image.full}`;
+              return x;
+            }
+          ) as ChampionsAPIDatas[];
           resolve(champions);
         })
         .catch(reject);
@@ -90,7 +49,12 @@ class Champion {
     return `${this.#ddragonAPI}/img/champion/loading/${this.id}_0.jpg`;
   }
 
-  getChampionDatas() {
+  getSpell(key: "Q" | "W" | "E" | "R") {
+    const keys = ["Q", "W", "E", "R"];
+    return this.data.spells[keys.indexOf(key)];
+  }
+
+  getChampionDatas(): Promise<ChampionData> {
     return new Promise((resolve, reject) => {
       axios
         .get(
@@ -99,7 +63,12 @@ class Champion {
           }.json`
         )
         .then((res) => {
-          const r = res.data;
+          const r = res.data as { data: { [key: string]: ChampionData } };
+          this.data = r.data[this.id] as ChampionData;
+          this.data.image.url = `${this.#ddragonAPI}/${this.apiVersion}/img/champion/${this.data.image.full}`;
+          for (const spell of this.data.spells) {
+            spell.image.url = `${this.#ddragonAPI}/${this.apiVersion}/img/spell/${spell.id}.png`;
+          }
           resolve(r.data[this.id]);
         })
         .catch(reject);
